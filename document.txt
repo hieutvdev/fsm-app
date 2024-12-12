@@ -1,5 +1,38 @@
 
 
 repo
-https://github.com/mahdinazmi/Spotify-Clone-With-Flutter
+https://github.dev/mahdinazmi/Spotify-Clone-With-Flutter
 
+lib/
+│
+├── config/                   # App-level configuration and environment setup
+│   ├── api_constants.dart    # API endpoints, keys, URLs, etc.
+│   └── app_config.dart       # Configurations for app (e.g., theme, localization)
+│
+├── core/                     # Core layer with common utilities, error handling
+│   ├── error/                # Base classes for error handling (e.g., failure, exceptions)
+│   ├── network/              # Networking utilities (API client, interceptor, etc.)
+│   ├── usecases/             # Common use case definitions, base use cases
+│   ├── utils/                # Shared utility classes, helpers, mappers
+│   └── platform/             # Platform-specific classes (e.g., device info, connectivity check)
+│
+├── features/                 # Individual feature directories
+│   ├── authentication/      # Example: Authentication feature
+│   │   ├── data/             # Data layer (models, repositories, datasources)
+│   │   │   ├── datasources/ # Remote/local data sources
+│   │   │   ├── models/      # Models (data transfer objects, etc.)
+│   │   │   └── repositories/ # Repositories implementation
+│   │   ├── domain/           # Domain layer (entities, repositories interfaces, use cases)
+│   │   │   ├── entities/    # Entities (core business objects)
+│   │   │   ├── repositories/ # Repositories interfaces
+│   │   │   └── usecases/    # Business logic / use cases
+│   │   ├── presentation/    # Presentation layer (BLoC, UI, widgets)
+│   │   │   ├── blocs/       # BLoC or other state management logic
+│   │   │   ├── screens/     # Screens/widgets for UI
+│   │   │   └── widgets/     # Reusable widgets
+│   │   └── authentication.dart # Entry point for authentication feature
+│   ├── home/                # Example: Home feature
+│   │   └── ...
+│   └── other_feature/       # Other features (e.g., profile, product, etc.)
+│
+└── main.dart                 # Main entry point for the app
