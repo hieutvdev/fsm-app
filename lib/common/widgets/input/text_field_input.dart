@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:fsm_app/common/helpers/theme_mode/is_dark_mode.dart';
+
+import '../../../config/theme/colors/app_colors.dart';
 
 class TextFieldInput extends StatefulWidget {
   final TextEditingController controller;
@@ -45,13 +48,15 @@ class _TextFieldInputState extends State<TextFieldInput> {
       keyboardType: widget.keyboardType,
       validator: widget.validator,
       onFieldSubmitted: widget.isSearch ? widget.onSearch : null,
-      style:
-          const TextStyle(fontSize: 12), // Set the font size for the input text
+      style: const TextStyle(fontSize: 12),
       decoration: InputDecoration(
         labelText: widget.labelText,
         hintText: widget.hintText,
-        hintStyle: const TextStyle(
-            fontSize: 12), // Set the font size for the hint text
+        hintStyle: TextStyle(
+            fontSize: 12,
+            color: context.isDarkMode
+                ? AppColors.grey
+                : AppColors.lightBackground),
         contentPadding:
             const EdgeInsets.symmetric(horizontal: 16.0, vertical: 0.0),
         filled: true,

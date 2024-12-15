@@ -19,8 +19,8 @@ class App extends StatelessWidget {
           return MaterialApp(
             title: "FSM App",
             theme: AppTheme.lightTheme,
-            darkTheme: AppTheme.darkTheme,
-            themeMode: mode,
+            // darkTheme: AppTheme.darkTheme,
+            // themeMode: mode,
             debugShowCheckedModeBanner: false,
             initialRoute: "/splash",
             routes: routeInit(context),

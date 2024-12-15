@@ -3,6 +3,9 @@ import 'package:fsm_app/common/helpers/theme_mode/is_dark_mode.dart';
 import 'package:fsm_app/config/theme/colors/app_colors.dart';
 import 'package:fsm_app/features/advertisement/data/models/advertisement_model.dart';
 
+import '../../../../common/helpers/navigation/app_navigation.dart';
+import '../screens/advertisement_screen.dart';
+
 class AdvertisementItemWidget extends StatefulWidget {
   final bool? isOnlyImage;
   final AdvertisementModel advertisement;
@@ -36,21 +39,30 @@ class _AdvertisementItemWidgetState extends State<AdvertisementItemWidget> {
               )),
         ),
         Positioned(
-          child: Container(
-              width: double.infinity,
-              height: widget.isOnlyImage == true
-                  ? MediaQuery.of(context).size.height * 0.25
-                  : MediaQuery.of(context).size.height * 0.22,
-              decoration: BoxDecoration(
-                borderRadius: widget.isOnlyImage == true
-                    ? BorderRadius.circular(5)
-                    : const BorderRadius.only(
-                        topLeft: Radius.circular(5),
-                        topRight: Radius.circular(5)),
-                image: DecorationImage(
-                    image: NetworkImage(widget.advertisement.imageUrl),
-                    fit: BoxFit.cover),
-              )),
+          child: InkWell(
+            onTap: () {
+              AppNavigation.push(
+                  context,
+                  AdvertisementScreen(
+                    url: widget.advertisement.url,
+                  ));
+            },
+            child: Container(
+                width: double.infinity,
+                height: widget.isOnlyImage == true
+                    ? MediaQuery.of(context).size.height * 0.25
+                    : MediaQuery.of(context).size.height * 0.22,
+                decoration: BoxDecoration(
+                  borderRadius: widget.isOnlyImage == true
+                      ? BorderRadius.circular(5)
+                      : const BorderRadius.only(
+                          topLeft: Radius.circular(5),
+                          topRight: Radius.circular(5)),
+                  image: DecorationImage(
+                      image: NetworkImage(widget.advertisement.imageUrl),
+                      fit: BoxFit.cover),
+                )),
+          ),
         ),
         Positioned(
             top: 0,

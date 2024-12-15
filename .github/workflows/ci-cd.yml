@@ -1,0 +1,51 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Log in to DockerHub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Build Docker image
+        run: |
+          docker build -t trinhhieu26/fsm-app:1.0 -t trinhhieu26/fsm-app:latest .
+
+      - name: Push Docker image
+        run: |
+          docker push trinhhieu26/fsm-app:1.0
+          docker push trinhhieu26/fsm-app:latest
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy to server
+        env:
+          DOCKER_HOST: ${{ secrets.DOCKER_HOST }}
+          DOCKER_CERT_PATH: ${{ secrets.DOCKER_CERT_PATH }}
+        run: |
+          docker pull trinhhieu26/fsm-app:latest
+          docker stop fsm-app || true
+          docker rm fsm-app || true
+          docker run -d --name fsm-app -p 3000:80 trinhhieu26/fsm-app:latest

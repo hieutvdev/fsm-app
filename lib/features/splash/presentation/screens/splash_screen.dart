@@ -51,7 +51,7 @@ class _SplashScreenState extends State<SplashScreen>
   @override
   Widget build(BuildContext context) {
     String logoPath =
-        context.isDarkMode ? AppImages.appLogoDark : AppImages.appLogoDark;
+        context.isDarkMode ? AppImages.appLogoDark : AppImages.appLogoLight;
     return Scaffold(
       body: Container(
         width: double.infinity,
@@ -60,10 +60,21 @@ class _SplashScreenState extends State<SplashScreen>
         alignment: Alignment.center,
         child: FadeTransition(
           opacity: _opacityAnimation,
-          child: Image.asset(
-            logoPath,
-            width: 120,
-            height: 120,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Image.asset(
+                logoPath,
+                width: 100,
+                height: 100,
+              ),
+              Text("FSM App",
+                  style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      color: context.isDarkMode ? Colors.white : Colors.black)),
+            ],
           ),
         ),
       ),

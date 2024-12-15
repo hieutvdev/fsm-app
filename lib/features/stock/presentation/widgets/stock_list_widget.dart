@@ -53,7 +53,7 @@ class _StockListWidgetState extends State<StockListWidget> {
   void initState() {
     super.initState();
     _scrollController.addListener(() {
-      if (_scrollController.position.pixels > 0) {
+      if (_scrollController.position.pixels >= 0) {
         setState(() {
           _showArrow = true;
         });
@@ -79,7 +79,7 @@ class _StockListWidgetState extends State<StockListWidget> {
           scrollDirection: Axis.horizontal,
           child: Container(
             width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height * 0.135,
+            height: MediaQuery.of(context).size.height * 0.125,
             alignment: Alignment.center,
             padding: const EdgeInsets.symmetric(vertical: 15),
             decoration: BoxDecoration(
@@ -93,7 +93,7 @@ class _StockListWidgetState extends State<StockListWidget> {
               itemBuilder: (context, index) {
                 return Padding(
                   padding: EdgeInsets.only(
-                    left: index == 0 ? 10 : 5,
+                    left: index == 0 ? 5 : 5,
                     right: index == items.length - 1 ? 20 : 5,
                   ),
                   child: Container(
@@ -106,14 +106,23 @@ class _StockListWidgetState extends State<StockListWidget> {
           ),
         ),
         if (_showArrow)
-          const Positioned(
-            top: 0,
-            bottom: 0,
-            right: 0,
-            child: Icon(
-              Icons.arrow_forward,
-              color: Colors.red,
-              size: 30,
+          Positioned(
+            top: MediaQuery.of(context).size.height * 0.135 / 2 - 15,
+            right: 5,
+            child: Container(
+              width: 30,
+              height: 30,
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                  color:
+                      context.isDarkMode ? AppColors.darkGrey : AppColors.grey,
+                  borderRadius: BorderRadius.circular(15),
+                  border: Border.all(color: Colors.grey)),
+              child: Icon(
+                Icons.arrow_forward,
+                color: context.isDarkMode ? AppColors.grey : AppColors.darkGrey,
+                size: 15,
+              ),
             ),
           ),
       ],

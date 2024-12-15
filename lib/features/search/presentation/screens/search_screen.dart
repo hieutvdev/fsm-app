@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_tts/flutter_tts.dart';
+import 'package:fsm_app/common/helpers/theme_mode/is_dark_mode.dart';
 import 'package:fsm_app/common/widgets/appbar/app_bar_base_wg.dart';
 import 'package:fsm_app/common/widgets/input/text_field_input.dart';
 import 'package:fsm_app/config/theme/colors/app_colors.dart';
@@ -12,6 +14,7 @@ class SearchScreen extends StatefulWidget {
 
 class _SearchScreenState extends State<SearchScreen> {
   final _searchController = TextEditingController();
+  final FlutterTts _flutterTts = FlutterTts();
 
   @override
   void initState() {
@@ -20,8 +23,15 @@ class _SearchScreenState extends State<SearchScreen> {
 
   @override
   void dispose() {
-    super.dispose();
     _searchController.dispose();
+    _flutterTts.stop();
+    super.dispose();
+  }
+
+  Future<void> _speakText() async {
+    if (_searchController.text.isNotEmpty) {
+      await _flutterTts.speak(_searchController.text);
+    }
   }
 
   @override
@@ -35,7 +45,7 @@ class _SearchScreenState extends State<SearchScreen> {
             controller: _searchController,
             hintText: "Search...",
             suffixIcon: IconButton(
-                onPressed: () {},
+                onPressed: _speakText,
                 icon: const Icon(
                   Icons.mic,
                   size: 20,
@@ -44,7 +54,9 @@ class _SearchScreenState extends State<SearchScreen> {
               Icons.search,
               size: 20,
             ),
-            fillColor: AppColors.darkGrey,
+            fillColor: context.isDarkMode
+                ? AppColors.darkGrey
+                : AppColors.grey.withOpacity(0.6),
           ),
         ),
         isLogo: false,

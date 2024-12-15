@@ -36,3 +36,7 @@ lib/
 │   └── other_feature/       # Other features (e.g., profile, product, etc.)
 │
 └── main.dart                 # Main entry point for the app
+
+
+share_plus chia sẻ ảnh, video, tệp và nhiều hơn nữa với các ứng dụng khác trên thiết bị của bạn
+flutter_tts đọc văn bản bằng giọng nói

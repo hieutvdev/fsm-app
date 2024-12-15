@@ -17,8 +17,8 @@ class _StockItemWidgetState extends State<StockItemWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: MediaQuery.of(context).size.width * 0.45,
-      height: MediaQuery.of(context).size.height * 0.1,
+      width: MediaQuery.of(context).size.width * 0.4,
+      height: MediaQuery.of(context).size.height * 0.08,
       padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
       decoration: BoxDecoration(
         color: Colors.transparent,
@@ -33,7 +33,7 @@ class _StockItemWidgetState extends State<StockItemWidget> {
           Text(
             widget.stockListItemModel.code,
             style: TextStyle(
-              fontSize: 14,
+              fontSize: 12,
               color: context.isDarkMode ? AppColors.grey : AppColors.darkGrey,
               fontWeight: FontWeight.bold,
             ),
@@ -42,7 +42,7 @@ class _StockItemWidgetState extends State<StockItemWidget> {
             children: [
               Text(widget.stockListItemModel.price.toString(),
                   style: TextStyle(
-                    fontSize: 12,
+                    fontSize: 8,
                     color: context.isDarkMode
                         ? AppColors.grey
                         : AppColors.darkGrey,
@@ -59,14 +59,14 @@ class _StockItemWidgetState extends State<StockItemWidget> {
                 ),
               Text(widget.stockListItemModel.change.toString(),
                   style: TextStyle(
-                    fontSize: 12,
+                    fontSize: 8,
                     color: widget.stockListItemModel.changePercent > 0
                         ? Colors.green
                         : Colors.red,
                   )),
               Text(' (${widget.stockListItemModel.changePercent.toString()}%)',
                   style: TextStyle(
-                    fontSize: 12,
+                    fontSize: 8,
                     color: widget.stockListItemModel.changePercent > 0
                         ? Colors.green
                         : Colors.red,
@@ -75,7 +75,7 @@ class _StockItemWidgetState extends State<StockItemWidget> {
           ),
           Text("GTGD: ${widget.stockListItemModel.total.toString()} tỷ",
               style: TextStyle(
-                fontSize: 12,
+                fontSize: 8,
                 color: context.isDarkMode ? AppColors.grey : AppColors.darkGrey,
               )),
         ],
