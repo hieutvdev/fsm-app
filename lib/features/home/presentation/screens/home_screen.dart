@@ -23,7 +23,7 @@ class _HomeScreenState extends State<HomeScreen> {
         imageUrl:
             "https://images.pexels.com/photos/6343453/pexels-photo-6343453.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load",
         domainUrl: "https://www.google.com"),
-    const Text("Hello World"),
+    const Text("Dino baby"),
     AdvertisementModel(
         id: "2",
         url: "https://unsplash.com/t/spirituality",
