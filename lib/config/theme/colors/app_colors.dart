@@ -5,8 +5,8 @@ import 'bottomnavigationbar/bottom_navigation_color.dart';
 class AppColors {
   static const darkBg = Color(0xff1f1e1e);
   static const lightBg = Color(0xffd2d2d2);
-  static const lightBackground = Color(0xffF2F2F2);
-  static const darkBackground = Color(0xff0D0C0C);
+  static const lightBackground = Color(0xfffffdfd);
+  static const darkBackground = Color(0xff0e0d0d);
   static const grey = Color(0xffBEBEBE);
   static const darkGrey = Color(0xff343434);
 

@@ -35,7 +35,14 @@ class _AdvertisementItemWidgetState extends State<AdvertisementItemWidget> {
                   : MediaQuery.of(context).size.height * 0.25,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(5),
-                color: context.isDarkMode ? AppColors.darkGrey : AppColors.grey,
+                color: context.isDarkMode
+                    ? AppColors.darkBackground
+                    : AppColors.lightBackground,
+                border: Border.all(
+                    color: context.isDarkMode
+                        ? AppColors.darkGrey
+                        : AppColors.grey,
+                    width: 0.5),
               )),
         ),
         Positioned(
@@ -73,8 +80,8 @@ class _AdvertisementItemWidgetState extends State<AdvertisementItemWidget> {
               alignment: const Alignment(0.5, 1),
               decoration: BoxDecoration(
                   color: context.isDarkMode
-                      ? AppColors.darkGrey.withOpacity(0.8)
-                      : AppColors.grey.withOpacity(0.8),
+                      ? AppColors.darkBackground.withOpacity(0.8)
+                      : AppColors.lightBackground.withOpacity(0.8),
                   borderRadius: const BorderRadius.only(
                     topRight: Radius.circular(5),
                     bottomLeft: Radius.circular(30),

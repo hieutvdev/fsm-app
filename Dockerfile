@@ -4,11 +4,11 @@ RUN apt-get update
 RUN apt-get install -y curl git unzip
 
 ARG FLUTTER_SDK=/usr/local/flutter
-ARG FLUTTER_VERSION=3.24.5
+ARG FLUTTER_VERSION=3.27.1
 ARG APP=/app/
 
-# Retry mechanism for git clone
-RUN for i in 1 2 3 4 5; do git clone https://github.com/flutter/flutter.git $FLUTTER_SDK && break || sleep 15; done
+
+RUN for i in 1 2; do git clone https://github.com/flutter/flutter.git $FLUTTER_SDK && break || sleep 15; done
 
 RUN cd $FLUTTER_SDK && git fetch && git checkout $FLUTTER_VERSION
 

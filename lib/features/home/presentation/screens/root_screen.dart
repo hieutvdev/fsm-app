@@ -24,23 +24,24 @@ class _RootScreenState extends State<RootScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
-          elevation: 0,
-          unselectedItemColor: context.isDarkMode
-              ? AppColors.unselectedItemColorDark
-              : AppColors.unselectedItemColorLight,
-          selectedItemColor: context.isDarkMode
-              ? AppColors.selectedItemColorDark
-              : AppColors.selectedItemColorLight,
-          type: BottomNavigationBarType.fixed,
-          currentIndex: _currentIndex,
-          onTap: (index) {
-            setState(() {});
-            _currentIndex = index;
-          },
-          backgroundColor: context.isDarkMode
-              ? AppColors.darkBackground
-              : AppColors.lightBackground,
-          items: bottomNavigationBarItems),
+        elevation: 0,
+        unselectedItemColor: context.isDarkMode
+            ? AppColors.unselectedItemColorDark
+            : AppColors.unselectedItemColorLight,
+        selectedItemColor: context.isDarkMode
+            ? AppColors.selectedItemColorDark
+            : AppColors.selectedItemColorLight,
+        type: BottomNavigationBarType.fixed,
+        currentIndex: _currentIndex,
+        onTap: (index) {
+          setState(() {});
+          _currentIndex = index;
+        },
+        backgroundColor: context.isDarkMode
+            ? AppColors.darkBackground
+            : AppColors.lightBackground,
+        items: bottomNavigationBarItems,
+      ),
       body: pages[_currentIndex],
     );
   }

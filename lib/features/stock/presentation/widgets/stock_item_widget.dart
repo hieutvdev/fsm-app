@@ -17,14 +17,16 @@ class _StockItemWidgetState extends State<StockItemWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: MediaQuery.of(context).size.width * 0.4,
+      width: MediaQuery.of(context).size.width * 0.375,
       height: MediaQuery.of(context).size.height * 0.08,
       padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
       decoration: BoxDecoration(
         color: Colors.transparent,
         borderRadius: BorderRadius.circular(5),
         border: Border.all(
-            color: context.isDarkMode ? AppColors.grey : AppColors.darkGrey),
+            color: context.isDarkMode
+                ? AppColors.grey.withOpacity(0.5)
+                : AppColors.darkGrey.withOpacity(0.5)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

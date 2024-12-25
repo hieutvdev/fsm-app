@@ -83,7 +83,10 @@ class _StockListWidgetState extends State<StockListWidget> {
             alignment: Alignment.center,
             padding: const EdgeInsets.symmetric(vertical: 15),
             decoration: BoxDecoration(
-              color: context.isDarkMode ? AppColors.darkGrey : AppColors.grey,
+              borderRadius: BorderRadius.circular(5),
+              color: context.isDarkMode
+                  ? AppColors.darkBackground
+                  : AppColors.lightBackground,
             ),
             child: ListView.builder(
               controller: _scrollController,
@@ -114,8 +117,9 @@ class _StockListWidgetState extends State<StockListWidget> {
               height: 30,
               alignment: Alignment.center,
               decoration: BoxDecoration(
-                  color:
-                      context.isDarkMode ? AppColors.darkGrey : AppColors.grey,
+                  color: context.isDarkMode
+                      ? AppColors.darkBackground.withOpacity(0.5)
+                      : AppColors.lightBackground.withOpacity(0.5),
                   borderRadius: BorderRadius.circular(15),
                   border: Border.all(color: Colors.grey)),
               child: Icon(
